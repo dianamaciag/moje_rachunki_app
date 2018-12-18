@@ -2,7 +2,7 @@ export const createNew = (bill) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('bills').add({
-            bill
+            ...bill
         }).then(() => {
             dispatch({
                 type: 'ADD_BILL',

@@ -6,7 +6,7 @@ const ToPay = ({ bills }) => {
     return (
         <div className="topay col-4 mr-3">
             <h4>Do zapłacenia</h4>
-            <p className="value">650zł</p>
+            <p className="value">...</p>
             {bills && bills.map(bill => {
                 return (
                     <BillToPay bill={bill} key={bill.id} />
