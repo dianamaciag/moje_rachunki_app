@@ -8,7 +8,7 @@ export const createNew = (bill) => {
                 type: 'ADD_BILL',
                 bill: bill
             })
-        }).cath((err) => {
+        }).catch((err) => {
             dispatch({
                 type: 'ADD_BILL_ERROR',
                 err: err

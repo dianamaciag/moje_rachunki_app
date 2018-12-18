@@ -13,7 +13,7 @@ const billReducer = (state = initState, action) => {
             console.log('created bill', action.bill);
             return state;
         case 'ADD_BILL_ERROR':
-            console.log('crate project error', action.err);
+            console.log('created project error', action.err);
             return state
         default:
             return state;
