@@ -25,7 +25,6 @@ class Board extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         bills: state.firestore.ordered.bills
     }

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { signIn } from '../../store/actions/authorizationActions'
+
 
 class SignIn extends Component {
     state = {
@@ -14,10 +17,14 @@ class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.signIn(this.state)
+        this.props.history.push('/')
+
     }
 
     render() {
+
+        const { authorizationError } = this.props
         return (
             <div className="form d-flex align-items-center justify-content-center">
                 <form onSubmit={this.handleSubmit} className="d-flex flex-column align-items-center">
@@ -27,16 +34,34 @@ class SignIn extends Component {
                         <input onChange={this.handleChange} type="email" id="email" className="form-control" />
                     </div>
 
-                    <div className="form-group mb-5">
+                    <div className="form-group mb-3">
                         <label htmlFor="password">Hasło: </label>
                         <input onChange={this.handleChange} type="password" className="form-control" id="password" />
                     </div>
 
+                    <div className="text-info mb-2">
+                        {authorizationError ? <p>{authorizationError}</p> : null}
+                    </div>
+
                     <button type="submit" className="btn btn-info">Zaloguj</button>
+
                 </form>
             </div>
         )
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        authorizationError: state.authorization.authorizationError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (credential) => dispatch(signIn(credential))
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

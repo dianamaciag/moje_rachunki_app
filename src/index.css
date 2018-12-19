@@ -53,3 +53,7 @@ code {
   display: block;
   font-weight: bold;
 }
+
+a {
+  cursor: pointer
+}

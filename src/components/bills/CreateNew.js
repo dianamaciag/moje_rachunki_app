@@ -10,14 +10,20 @@ class CreateNew extends Component {
     }
 
     handleChange = (e) => {
+
         this.setState({
             [e.target.id]: e.target.value
         })
+
+
     }
 
     handleSubmit = (e) => {
+
         e.preventDefault();
-        this.props.createNew(this.state)
+        this.props.createNew(this.state);
+
+        this.props.history.push('/')
 
     }
 
