@@ -19,6 +19,18 @@ const authorizationReducer = (state = initState, action) => {
         case 'SIGNOUT_SUCCESS':
             console.log('wylogowano')
             return state
+        case 'SIGNUP_SUCCESS':
+            console.log('rejestracja pomyslna')
+            return {
+                ...state,
+                authorizationError: null
+            }
+        case 'SIGNUP_ERROR':
+            console.log('rejestracja nieudana')
+            return {
+                ...state,
+                authorizationError: action.err.message
+            }
         default:
             return state
     }

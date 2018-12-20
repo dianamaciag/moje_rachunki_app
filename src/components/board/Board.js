@@ -5,12 +5,16 @@ import Paid from './Paid'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 class Board extends Component {
 
     render() {
 
-        const { bills } = this.props;
+        const { bills, authorization } = this.props;
+
+        if (!authorization.uid) return <Redirect to='/signin' />
+
 
         return (
             <div className="board" >
@@ -26,7 +30,8 @@ class Board extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        bills: state.firestore.ordered.bills
+        bills: state.firestore.ordered.bills,
+        authorization: state.firebase.auth
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authorizationActions'
+import { Redirect } from 'react-router-dom'
 
 
 class SignIn extends Component {
@@ -24,7 +25,10 @@ class SignIn extends Component {
 
     render() {
 
-        const { authorizationError } = this.props
+        const { authorizationError, authorization } = this.props
+
+        if (authorization.uid) return <Redirect to='/' />
+
         return (
             <div className="form d-flex align-items-center justify-content-center">
                 <form onSubmit={this.handleSubmit} className="d-flex flex-column align-items-center">
@@ -53,7 +57,8 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authorizationError: state.authorization.authorizationError
+        authorizationError: state.authorization.authorizationError,
+        authorization: state.firebase.auth
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { createNew } from '../../store/actions/billsActions'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class CreateNew extends Component {
     state = {
@@ -28,6 +29,11 @@ class CreateNew extends Component {
     }
 
     render() {
+
+        const { authorization } = this.props;
+
+        if (!authorization.uid) return <Redirect to='/signin' />
+
         return (
             <div className="form d-flex align-items-center justify-content-center">
                 <form onSubmit={this.handleSubmit} className="d-flex flex-column align-items-center">
@@ -55,10 +61,17 @@ class CreateNew extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        authorization: state.firebase.auth
+    }
+}
+
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createNew: (bill) => dispatch(createNew(bill))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateNew)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNew)
