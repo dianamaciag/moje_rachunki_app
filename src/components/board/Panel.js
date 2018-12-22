@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 
 class Panel extends Component {
 
-    state = {
-
-    }
-
     render() {
 
         const day = new Date().getDate()

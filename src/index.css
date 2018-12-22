@@ -57,3 +57,11 @@ code {
 a {
   cursor: pointer
 }
+
+.user {
+  font-size: 25px;
+}
+
+.user span {
+  font-weight: bold;
+}

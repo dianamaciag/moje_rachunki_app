@@ -26,7 +26,7 @@ class SignIn extends Component {
 
     render() {
 
-        const { authorization } = this.props
+        const { authorization, authorizationError } = this.props
 
         if (authorization.uid) return <Redirect to='/' />
 
@@ -55,7 +55,12 @@ class SignIn extends Component {
                         <input onChange={this.handleChange} type="password" className="form-control" id="password" />
                     </div>
 
+                    <div className='mb-2'>
+                        {authorizationError ? <p> {authorizationError}</p> : null}
+                    </div>
+
                     <button type="submit" className="btn btn-info">Zarejestruj</button>
+
                 </form>
             </div>
         )
@@ -64,7 +69,8 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authorization: state.firebase.auth
+        authorization: state.firebase.auth,
+        authorizationError: state.authorization.authorizationError
     }
 }
 
