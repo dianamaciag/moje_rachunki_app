@@ -7,7 +7,8 @@ class CreateNew extends Component {
     state = {
         name: '',
         value: '',
-        date: ''
+        date: '',
+        active: 'true'
     }
 
     handleChange = (e) => {
