@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 class CreateNew extends Component {
+
     state = {
         name: '',
         value: '',
         date: '',
-        active: 'true'
+        active: true
     }
 
     handleChange = (e) => {

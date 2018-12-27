@@ -26,7 +26,7 @@ class Board extends Component {
                 <Panel />
                 <div className="row justify-content-center my-5">
                     <ToPay bills={bills} />
-                    <Paid />
+                    <Paid bills={bills} />
                 </div>
             </div>
         )
@@ -40,6 +40,7 @@ const mapStateToProps = (state) => {
         user: state.firebase.profile
     }
 }
+
 
 export default compose(
     connect(mapStateToProps),

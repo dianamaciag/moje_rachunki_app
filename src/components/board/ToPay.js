@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 import BillToPay from '../bills/BillToPay'
 
-const ToPay = ({ bills }) => {
+class ToPay extends Component {
 
-    return (
-        <div className="topay col-4 mr-3">
-            <h4>Do zapłacenia</h4>
-            <p className="value">...</p>
-            {bills && bills.map(bill => {
-                return (
-                    <BillToPay bill={bill} key={bill.id} />
-                )
-            })}
+    render() {
 
-        </div>
-    )
+        const { bills } = this.props
+
+
+
+        return (
+            <div className="topay col-4 mr-3">
+                <h4>Do zapłacenia</h4>
+                <p className="value"> ... zł.</p>
+                {bills && bills.map(bill => {
+                    if (bill.active) {
+                        return (
+                            <BillToPay bill={bill} key={bill.id} />
+                        )
+                    } else return null
+                })}
+
+            </div>
+        )
+    }
 
 }
 
