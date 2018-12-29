@@ -46,7 +46,7 @@ class Board extends Component {
                         {user.firstName ? <p className='user'> Zalogowano jako: <span className='text-info'> {user.firstName + ' ' + user.lastName} </span> </p> : null}
                     </div>
                 </div>
-                <Panel date={date} />
+                <Panel date={date} bills={bills} />
                 <div className="row justify-content-center my-5">
                     <ToPay bills={bills} toPayAmount={this.state.amountToPay} handleCalc={this.handleCalcAmountToPay} date={date} />
                     <Paid bills={bills} paidAmount={this.state.paidAmount} date={date} />

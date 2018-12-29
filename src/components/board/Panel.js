@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { setBillActive } from '../../store/actions/billsActions'
+import { connect } from 'react-redux'
+
 
 class Panel extends Component {
+
+    handleResetBills = () => {
+        this.props.bills.map(bill => this.props.setBillActive(bill.id))
+    }
 
     render() {
 
@@ -14,7 +21,7 @@ class Panel extends Component {
                 </div>
                 <div className="col-5 d-flex align-items-center">
                     <Link to="/create"><button className="btn btn-info mr-4 ml-2">Dodaj płatność</button></Link>
-                    <button className="btn btn-info">Resetuj płatności</button>
+                    <button onClick={this.handleResetBills} className="btn btn-info">Resetuj płatności</button>
                 </div>
             </div>
         )
@@ -22,5 +29,11 @@ class Panel extends Component {
 
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setBillActive: (bill) => dispatch(setBillActive(bill))
+    }
+}
 
-export default Panel
+
+export default connect(null, mapDispatchToProps)(Panel)
