@@ -15,13 +15,13 @@ class PaidBill extends Component {
 
     render() {
 
-        const { bill } = this.props
+        const { bill, date } = this.props
 
         return (
             <div className="item my-2 py-2">
                 <p>Nazwa płatności: <span className="name">{bill.name}</span></p>
                 <p>Kwota: <span className="cost">{bill.value} zł.</span></p>
-                <p>Zapłacono: <span className="date">Data klikniecia zaplacone</span> </p>
+                <p>Zapłacono: <span className="date">{`${date.year}-${date.month}-${date.day}`}</span> </p>
 
                 <button onClick={this.handleSetBillActive} className="btn btn-info mr-2">Cofnij płatność</button>
                 <button onClick={this.handleDeleting} className="btn btn-info">Usuń</button>

@@ -5,22 +5,19 @@ class ToPay extends Component {
 
     render() {
 
-        const { bills } = this.props
-
-
+        const { bills, toPayAmount, date } = this.props
 
         return (
             <div className="topay col-4 mr-3">
                 <h4>Do zapłacenia</h4>
-                <p className="value"> ... zł.</p>
+                <p className="value"> {toPayAmount} zł.</p>
                 {bills && bills.map(bill => {
                     if (bill.active) {
                         return (
-                            <BillToPay bill={bill} key={bill.id} />
+                            <BillToPay bill={bill} key={bill.id} date={date} />
                         )
                     } else return null
                 })}
-
             </div>
         )
     }

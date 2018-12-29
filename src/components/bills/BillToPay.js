@@ -15,17 +15,21 @@ class BillToPay extends Component {
 
     render() {
 
-        const { bill } = this.props
+        const { bill, date } = this.props
+
+        const currentDay = parseInt(date.day)
+
+        const paymentDay = parseInt(bill.date.substr(8))
 
         return (
-            <div className="item my-2 py-2">
+            <div className="item my-2 py-2" style={currentDay >= paymentDay ? { border: '2px solid red' } : null} >
                 <p>Nazwa płatności: <span>{bill.name}</span></p>
                 <p>Kwota: <span>{bill.value}zł.</span></p>
-                <p>Termin płatnosci: <span>{bill.date}</span> </p>
+                <p>Termin płatności: <span>{bill.date}</span> </p>
 
                 <button onClick={this.handleSetBillInactive} className="btn btn-info mr-2">Zapłacone</button>
                 <button onClick={this.handleDeleting} className="btn btn-info">Usuń</button>
-            </div>
+            </ div>
         )
 
     }

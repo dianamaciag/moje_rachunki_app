@@ -9,11 +9,34 @@ import { Redirect } from 'react-router-dom'
 
 class Board extends Component {
 
+    state = {
+        amountToPay: 0,
+        paidAmount: 0
+    }
+
+    handleCalcAmountToPay = (amount) => {
+        this.setState((prevState) => ({
+            amountToPay: prevState.amountToPay += amount,
+        }))
+    }
+
+    handleCalcPaidAmount = (amount) => {
+        this.setState((prevState) => ({
+            paidAmount: prevState.paidAmount += amount,
+        }))
+    }
+
     render() {
 
         const { bills, authorization, user } = this.props;
 
         if (!authorization.uid) return <Redirect to='/signin' />
+
+        const date = {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            day: new Date().getDate()
+        }
 
 
         return (
@@ -23,10 +46,10 @@ class Board extends Component {
                         {user.firstName ? <p className='user'> Zalogowano jako: <span className='text-info'> {user.firstName + ' ' + user.lastName} </span> </p> : null}
                     </div>
                 </div>
-                <Panel />
+                <Panel date={date} />
                 <div className="row justify-content-center my-5">
-                    <ToPay bills={bills} />
-                    <Paid bills={bills} />
+                    <ToPay bills={bills} toPayAmount={this.state.amountToPay} handleCalc={this.handleCalcAmountToPay} date={date} />
+                    <Paid bills={bills} paidAmount={this.state.paidAmount} date={date} />
                 </div>
             </div>
         )
