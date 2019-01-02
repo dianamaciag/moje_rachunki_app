@@ -34,10 +34,9 @@ class Board extends Component {
 
         const date = {
             year: new Date().getFullYear(),
-            month: new Date().getMonth() + 1,
-            day: new Date().getDate()
+            month: new Date().getMonth() < 9 ? `0${new Date().getMonth() + 1}` : new Date().getMonth() + 1,
+            day: new Date().getDate() < 10 ? `0${new Date().getDate()}` : new Date().getDate()
         }
-
 
         return (
             <div className="board" >
