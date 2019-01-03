@@ -15,13 +15,14 @@ class Panel extends Component {
         const { date } = this.props
 
         return (
-            <div className='row mt-5 justify-content-center panel'>
-                <div className="col-5">
+            <div className='row mt-4 d-flex justify-content-center panel'>
+                <div className="col-8 col-md-5">
                     <p className="date"> Dzisiaj jest: <span className="text-info ml-2">{`${date.day}.${date.month}`}</span></p>
                 </div>
-                <div className="col-5 d-flex align-items-center">
-                    <Link to="/create"><button className="btn btn-info mr-4 ml-2">Dodaj płatność</button></Link>
-                    <button onClick={this.handleResetBills} className="btn btn-info">Resetuj płatności</button>
+                <div className="w-100"></div>
+                <div className="col-12 col-sm-8 col-md-6 d-flex buttons">
+                    <div className='col-4'><Link to="/create"><button className="btn btn-info">Dodaj płatność</button></Link></div>
+                    <div className='col-4'><button onClick={this.handleResetBills} className="btn btn-info">Resetuj płatności</button></div>
                 </div>
             </div>
         )

@@ -40,14 +40,15 @@ class Board extends Component {
 
         return (
             <div className="board" >
-                <div className='row justify-content-end mt-3'>
-                    <div className="col-8">
+                <div className='row justify-content-start mt-3'>
+                    <div className="col-12">
                         {user.firstName ? <p className='user'> Zalogowano jako: <span className='text-info'> {user.firstName + ' ' + user.lastName} </span> </p> : null}
                     </div>
                 </div>
                 <Panel date={date} bills={bills} />
                 <div className="row justify-content-center my-5">
                     <ToPay bills={bills} toPayAmount={this.state.amountToPay} handleCalc={this.handleCalcAmountToPay} date={date} />
+                    <div className="w-100"></div>
                     <Paid bills={bills} paidAmount={this.state.paidAmount} date={date} />
                 </div>
             </div>

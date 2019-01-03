@@ -10,7 +10,7 @@ class Paid extends Component {
         const { bills, paidAmount, date } = this.props
 
         return (
-            <div className="paid col-4">
+            <div className="paid col-8 col-sm-6 col-md-4">
                 <h4>Zapłacone</h4>
                 <p className="value"> {paidAmount} zł</p>
                 {bills && bills.map(bill => {

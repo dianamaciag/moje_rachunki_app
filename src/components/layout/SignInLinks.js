@@ -8,7 +8,7 @@ const SignInLinks = (props) => {
     return (
         <ul className="navbar-nav ml-auto">
             <li className="nav-item"><NavLink className="nav-link text-white" to='/create'>Dodaj płatność</NavLink></li>
-            <li className="nav-item"><a onClick={props.signOut} className="nav-link text-white">Wyloguj</a></li>
+            <li className="nav-item"><button onClick={props.signOut} className="nav-link text-white logout">Wyloguj</button></li>
         </ul>
     )
 }

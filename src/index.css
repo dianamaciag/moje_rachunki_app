@@ -13,8 +13,13 @@ code {
     monospace;
 }
 
+html {
+  font-size: 12px;
+}
+
 .container {
   min-height: 100vh;
+  max-width: 900px;
 }
 
 .board,
@@ -23,12 +28,26 @@ code {
   flex-grow: 1;
 }
 
-.panel .date {
-  margin-bottom: 0;
-  font-size: 30px;
+.panel {
   text-align: center;
 }
 
+.panel .date {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.panel .date span {
+  font-weight: bold;
+}
+
+.panel .buttons {
+  flex-wrap: wrap;
+}
+
+.panel .buttons div {
+  margin-left: 10%;
+}
 
 .topay,
 .paid {
@@ -36,6 +55,10 @@ code {
   border: 2px solid rgb(23, 162, 184);
   background-color: rgb(137, 205, 214);
   text-align: center;
+}
+
+.topay {
+  margin-bottom: 50px;
 }
 
 .topay .value,
@@ -59,9 +82,51 @@ a {
 }
 
 .user {
-  font-size: 25px;
+  padding-left: 2%;
+  font-size: 1.6rem;
 }
 
 .user span {
   font-weight: bold;
+}
+
+button.logout {
+  background-color: transparent;
+  border: none;
+  cursor: pointer
+}
+
+@media (min-width: 460px) {
+
+  html {
+    font-size: 14px;
+  }
+
+}
+
+@media (min-width: 640px) {
+
+  html {
+    font-size: 16px;
+  }
+
+}
+
+
+@media (min-width: 768px) {
+
+  .panel .date {
+    margin-bottom: 0
+  }
+
+  .topay {
+    margin-right: 50px;
+    margin-bottom: 0;
+  }
+
+
+  .w-100 {
+    display: none;
+  }
+
 }
