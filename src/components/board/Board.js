@@ -9,26 +9,10 @@ import { Redirect } from 'react-router-dom'
 
 class Board extends Component {
 
-    state = {
-        amountToPay: 0,
-        paidAmount: 0
-    }
-
-    handleCalcAmountToPay = (amount) => {
-        this.setState((prevState) => ({
-            amountToPay: prevState.amountToPay += amount,
-        }))
-    }
-
-    handleCalcPaidAmount = (amount) => {
-        this.setState((prevState) => ({
-            paidAmount: prevState.paidAmount += amount,
-        }))
-    }
 
     render() {
 
-        const { bills, authorization, user } = this.props;
+        const { bills, authorization, user, summary } = this.props;
 
         if (!authorization.uid) return <Redirect to='/signin' />
 
@@ -47,9 +31,9 @@ class Board extends Component {
                 </div>
                 <Panel date={date} bills={bills} />
                 <div className="row justify-content-center my-5">
-                    <ToPay bills={bills} toPayAmount={this.state.amountToPay} handleCalc={this.handleCalcAmountToPay} date={date} />
+                    <ToPay bills={bills} date={date} summary={summary} />
                     <div className="w-100"></div>
-                    <Paid bills={bills} paidAmount={this.state.paidAmount} date={date} />
+                    <Paid bills={bills} date={date} summary={summary} />
                 </div>
             </div>
         )
@@ -59,6 +43,7 @@ class Board extends Component {
 const mapStateToProps = (state) => {
     return {
         bills: state.firestore.ordered.bills,
+        summary: state.firestore.ordered.summary,
         authorization: state.firebase.auth,
         user: state.firebase.profile
     }
@@ -71,6 +56,9 @@ export default compose(
         {
             collection: 'bills',
             orderBy: ['date', 'asc']
+        },
+        {
+            collection: 'summary'
         }
     ])
 )(Board)

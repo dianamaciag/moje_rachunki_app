@@ -5,12 +5,14 @@ class ToPay extends Component {
 
     render() {
 
-        const { bills, toPayAmount, date } = this.props
+        const { bills, date, summary } = this.props
 
         return (
             <div className="topay col-8 col-sm-6 col-md-4">
                 <h4>Do zapłacenia</h4>
-                <p className="value"> {toPayAmount} zł.</p>
+                <p className="value">
+                    {summary ? summary[0].toPay + ' zł' : 'przeliczanie...'}
+                </p>
                 {bills && bills.map(bill => {
                     if (bill.active) {
                         return (

@@ -29,7 +29,6 @@ export const deleteBill = (id) => {
         firestore.collection('bills').doc(id).delete().then(() => {
             dispatch({
                 type: 'DELETE_BILL',
-                bill: null
             })
         }).catch((err) => {
             dispatch({

@@ -5,14 +5,14 @@ class Paid extends Component {
 
     render() {
 
-
-
-        const { bills, paidAmount, date } = this.props
+        const { bills, date, summary } = this.props
 
         return (
             <div className="paid col-8 col-sm-6 col-md-4">
                 <h4>Zapłacone</h4>
-                <p className="value"> {paidAmount} zł</p>
+                <p className="value">
+                    {summary ? summary[0].paid + ' zł' : 'przeliczanie...'}
+                </p>
                 {bills && bills.map(bill => {
                     if (!bill.active) {
                         return (
