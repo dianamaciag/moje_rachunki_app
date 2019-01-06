@@ -5,11 +5,17 @@ const initState = {
 const summaryReducer = (state = initState, action) => {
 
     switch (action.type) {
-        case 'UPDATE_SUMMARY':
-            console.log('updated summary', action.summary);
+        case 'UPDATE_SUMMARY_PAID':
+            console.log('updated summary paid');
             return state;
-        case 'UPDATE_SUMMARY_ERROR':
-            console.log('updated summary error', action.err);
+        case 'UPDATE_SUMMARY_PAID_ERROR':
+            console.log('updated summary paid error');
+            return state;
+        case 'UPDATE_SUMMARY_TO_PAY':
+            console.log('updated summary to pay');
+            return state;
+        case 'UPDATE_SUMMARY_TO_PAY_ERROR':
+            console.log('updated summary to pay error');
             return state;
         default:
             return state;

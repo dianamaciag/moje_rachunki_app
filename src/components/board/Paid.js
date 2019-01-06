@@ -14,9 +14,9 @@ class Paid extends Component {
                     {summary ? summary[0].paid + ' zł' : 'przeliczanie...'}
                 </p>
                 {bills && bills.map(bill => {
-                    if (!bill.active) {
+                    if (!bill.active && summary) {
                         return (
-                            <PaidBill bill={bill} key={bill.id} date={date} />
+                            <PaidBill bill={bill} key={bill.id} date={date} summary={summary[0]} />
                         )
                     } else return null
                 })}

@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import { createNew } from '../../store/actions/billsActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { updateToPay } from '../../store/actions/summaryActions'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 class CreateNew extends Component {
 
     state = {
         name: '',
-        value: '',
+        value: 0,
         date: '',
         active: true
     }
@@ -27,6 +30,14 @@ class CreateNew extends Component {
         this.props.createNew(this.state);
 
         this.props.history.push('/')
+
+        const { summary } = this.props
+
+        let summaryAmount = parseFloat(summary[0].toPay) + parseFloat(this.state.value);
+
+        console.log(summaryAmount, this.state.value, summary[0].toPay)
+
+        this.props.updateToPay(summaryAmount.toFixed(2))
 
     }
 
@@ -48,7 +59,7 @@ class CreateNew extends Component {
 
                     <div className="form-group mb-4">
                         <label htmlFor="cost">Kwota: </label>
-                        <input onChange={this.handleChange} type="number" className="form-control" id="value" />
+                        <input onChange={this.handleChange} type="number" step="0.01" className="form-control" id="value" />
                     </div>
 
                     <div className="form-group mb-4">
@@ -65,15 +76,23 @@ class CreateNew extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authorization: state.firebase.auth
+        authorization: state.firebase.auth,
+        summary: state.firestore.ordered.summary
     }
 }
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createNew: (bill) => dispatch(createNew(bill))
+        createNew: (bill) => dispatch(createNew(bill)),
+        updateToPay: (amount) => dispatch(updateToPay(amount))
     }
 }
 
-export default (connect(mapStateToProps, mapDispatchToProps))(CreateNew)
+export default compose(connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([
+        {
+            collection: 'summary'
+        }
+    ])
+)(CreateNew)

@@ -2,15 +2,34 @@ import React, { Component } from 'react'
 import { deleteBill } from '../../store/actions/billsActions'
 import { setBillActive } from '../../store/actions/billsActions'
 import { connect } from 'react-redux'
+import { updatePaid } from '../../store/actions/summaryActions'
+import { updateToPay } from '../../store/actions/summaryActions'
 
 class PaidBill extends Component {
 
     handleDeleting = () => {
-        this.props.deleteBill(this.props.bill.id);
+
+        const { bill, summary } = this.props
+
+        this.props.deleteBill(bill.id);
+
+        let summaryAmount = parseFloat(summary.paid) - parseFloat(bill.value);
+
+        this.props.updatePaid(summaryAmount.toFixed(2))
     }
 
     handleSetBillActive = () => {
-        this.props.setBillActive(this.props.bill.id)
+
+        const { bill, summary } = this.props
+
+        this.props.setBillActive(bill.id)
+
+        let summaryAmountToPay = parseFloat(summary.toPay) + parseFloat(bill.value);
+        let summaryPaidAmount = parseFloat(summary.paid) - parseFloat(bill.value);
+
+        this.props.updatePaid(summaryPaidAmount.toFixed(2))
+        this.props.updateToPay(summaryAmountToPay.toFixed(2))
+
     }
 
     render() {
@@ -33,8 +52,10 @@ class PaidBill extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteBill: (bill) => dispatch(deleteBill(bill)),
-        setBillActive: (bill) => dispatch(setBillActive(bill))
+        deleteBill: (id) => dispatch(deleteBill(id)),
+        setBillActive: (id) => dispatch(setBillActive(id)),
+        updatePaid: (amount) => dispatch(updatePaid(amount)),
+        updateToPay: (amount) => dispatch(updateToPay(amount)),
     }
 }
 

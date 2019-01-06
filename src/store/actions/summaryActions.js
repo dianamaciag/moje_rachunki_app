@@ -1,20 +1,43 @@
-export const updateSummary = (summary, amount) => {
+export const updateToPay = (amount) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
 
         const firestore = getFirestore();
 
-        firestore.collection('summary').doc('sFnacbO5Z6L6qlD9O5fm').update({
-            paid: summary.paid += amount,
-            toPay: summary.toPay += amount
+        firestore.collection('summary').doc('14866BBNRSsBsKt2D0Qm').update({
+            toPay: amount
         }).then(() => {
             dispatch({
-                type: 'UPDATE_SUMMARY',
+                type: 'UPDATE_SUMMARY_TO_PAY',
             })
         }).catch((err) => {
             dispatch({
-                type: 'UPDATE_SUMMARY_ERROR',
+                type: 'UPDATE_SUMMARY_TO_PAY_ERROR',
                 err: err
             })
         })
     }
 }
+
+
+export const updatePaid = (amount) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+
+        const firestore = getFirestore();
+
+        firestore.collection('summary').doc('14866BBNRSsBsKt2D0Qm').update({
+            paid: amount
+        }).then(() => {
+            dispatch({
+                type: 'UPDATE_SUMMARY_PAID',
+            })
+        }).catch((err) => {
+            dispatch({
+                type: 'UPDATE_SUMMARY_PAID_ERROR',
+                err: err
+            })
+        })
+    }
+}
+
+
+

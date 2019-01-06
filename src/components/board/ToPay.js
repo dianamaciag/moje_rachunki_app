@@ -8,15 +8,16 @@ class ToPay extends Component {
         const { bills, date, summary } = this.props
 
         return (
+
             <div className="topay col-8 col-sm-6 col-md-4">
                 <h4>Do zapłacenia</h4>
                 <p className="value">
                     {summary ? summary[0].toPay + ' zł' : 'przeliczanie...'}
                 </p>
                 {bills && bills.map(bill => {
-                    if (bill.active) {
+                    if (bill.active && summary) {
                         return (
-                            <BillToPay bill={bill} key={bill.id} date={date} />
+                            <BillToPay bill={bill} key={bill.id} date={date} summary={summary[0]} />
                         )
                     } else return null
                 })}

@@ -2,12 +2,20 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { setBillActive } from '../../store/actions/billsActions'
 import { connect } from 'react-redux'
+import { updatePaid } from '../../store/actions/summaryActions'
+import { updateToPay } from '../../store/actions/summaryActions'
 
 
 class Panel extends Component {
 
     handleResetBills = () => {
-        this.props.bills.map(bill => this.props.setBillActive(bill.id))
+        let summaryAmountToPay = 0
+        this.props.bills.map(bill => {
+            this.props.setBillActive(bill.id)
+            return summaryAmountToPay += parseFloat(bill.value)
+        })
+        this.props.updatePaid('0.00')
+        this.props.updateToPay(summaryAmountToPay.toFixed(2))
     }
 
     render() {
@@ -32,7 +40,9 @@ class Panel extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setBillActive: (bill) => dispatch(setBillActive(bill))
+        setBillActive: (id) => dispatch(setBillActive(id)),
+        updatePaid: (amount) => dispatch(updatePaid(amount)),
+        updateToPay: (amount) => dispatch(updateToPay(amount))
     }
 }
 
