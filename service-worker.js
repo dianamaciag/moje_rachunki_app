@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/moje-rachunki/precache-manifest.b1c86d2e0208bc8a601c4c6e33a15a05.js"
+  "/moje_rachunki_app/precache-manifest.d6a8f6b1b22b3a557536c7dca3646f20.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/moje-rachunki/index.html", {
+workbox.routing.registerNavigationRoute("/moje_rachunki_app/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
