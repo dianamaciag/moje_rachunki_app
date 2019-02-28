@@ -1,13 +1,13 @@
 {
-  "main.css": "/moje_rachunki_app/signin/static/css/main.5e9ded00.chunk.css",
-  "main.js": "/moje_rachunki_app/signin/static/js/main.078fb0ca.chunk.js",
-  "main.js.map": "/moje_rachunki_app/signin/static/js/main.078fb0ca.chunk.js.map",
-  "static/js/1.eb13917a.chunk.js": "/moje_rachunki_app/signin/static/js/1.eb13917a.chunk.js",
-  "static/js/1.eb13917a.chunk.js.map": "/moje_rachunki_app/signin/static/js/1.eb13917a.chunk.js.map",
-  "runtime~main.js": "/moje_rachunki_app/signin/static/js/runtime~main.1c0faecc.js",
-  "runtime~main.js.map": "/moje_rachunki_app/signin/static/js/runtime~main.1c0faecc.js.map",
-  "static/css/main.5e9ded00.chunk.css.map": "/moje_rachunki_app/signin/static/css/main.5e9ded00.chunk.css.map",
-  "index.html": "/moje_rachunki_app/signin/index.html",
-  "precache-manifest.1762e0edad79c514163f65f0621f2aee.js": "/moje_rachunki_app/signin/precache-manifest.1762e0edad79c514163f65f0621f2aee.js",
-  "service-worker.js": "/moje_rachunki_app/signin/service-worker.js"
+  "main.css": "/moje_rachunki_app/static/css/main.5e9ded00.chunk.css",
+  "main.js": "/moje_rachunki_app/static/js/main.e553c11d.chunk.js",
+  "main.js.map": "/moje_rachunki_app/static/js/main.e553c11d.chunk.js.map",
+  "static/js/1.72e8a12b.chunk.js": "/moje_rachunki_app/static/js/1.72e8a12b.chunk.js",
+  "static/js/1.72e8a12b.chunk.js.map": "/moje_rachunki_app/static/js/1.72e8a12b.chunk.js.map",
+  "runtime~main.js": "/moje_rachunki_app/static/js/runtime~main.f0fb5fb9.js",
+  "runtime~main.js.map": "/moje_rachunki_app/static/js/runtime~main.f0fb5fb9.js.map",
+  "static/css/main.5e9ded00.chunk.css.map": "/moje_rachunki_app/static/css/main.5e9ded00.chunk.css.map",
+  "index.html": "/moje_rachunki_app/index.html",
+  "precache-manifest.d6a8f6b1b22b3a557536c7dca3646f20.js": "/moje_rachunki_app/precache-manifest.d6a8f6b1b22b3a557536c7dca3646f20.js",
+  "service-worker.js": "/moje_rachunki_app/service-worker.js"
 }
