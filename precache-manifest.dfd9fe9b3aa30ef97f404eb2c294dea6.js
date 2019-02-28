@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/moje_rachunki_app/static/js/runtime~main.f0fb5fb9.js"
   },
   {
-    "revision": "e553c11da511c1666713",
-    "url": "/moje_rachunki_app/static/js/main.e553c11d.chunk.js"
+    "revision": "f49d248955375912b3f8",
+    "url": "/moje_rachunki_app/static/js/main.f49d2489.chunk.js"
   },
   {
     "revision": "72e8a12bdcb3eb5176fa",
     "url": "/moje_rachunki_app/static/js/1.72e8a12b.chunk.js"
   },
   {
-    "revision": "e553c11da511c1666713",
-    "url": "/moje_rachunki_app/static/css/main.5e9ded00.chunk.css"
+    "revision": "f49d248955375912b3f8",
+    "url": "/moje_rachunki_app/static/css/main.14f492f8.chunk.css"
   },
   {
-    "revision": "c4584f15a1812845ea416a735749f4c0",
+    "revision": "e96e5681a72cfba6f91a3f5b6aa54021",
     "url": "/moje_rachunki_app/index.html"
   }
 ];
